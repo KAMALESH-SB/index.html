@@ -4,62 +4,131 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
-        /* Existing styles... */
-
-        /* Modal Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        .main {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+        .navbar {
+            width: 86%;
+            display: flex;
+            margin: auto;
+            padding: 15px 0;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        ul {
+            margin-top: -4%;
+        }
+        ul li {
+            list-style: none;
+            display: inline-block;
+            padding: 10px 16px;
+        }
+        ul li a {
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            color: darkslategrey;
+            transition: color .4s ease;
+        }
+        ul li a:hover {
+            color: rgb(230, 104, 59);
+        }
+        .info {
+            margin-left: 7%;
+            margin-top: 10%;
+        }
+        .info h1 {
+            font-size: 65px;
+            color: rgb(36, 32, 30);
+        }
+        .info a {
+            text-decoration: none;
+            color: #fff;
+            background: rgb(36, 32, 30);
+            margin: 26px 0;
+            padding: 10px 18px;
+            border-radius: 10px;
+            display: inline-block;
+            transition: background .4s ease;
+        }
+        .info a:hover {
+            background: rgb(59, 174, 209);
+        }
         .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
+            display: none;
+            position: fixed;
+            z-index: 1;
             left: 0;
             top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
             padding-top: 60px;
         }
-
         .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto; /* 15% from the top and centered */
+            background-color: #fff;
+            margin: 5% auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
-            border-radius: 8px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 400px;
         }
-
         .close {
             color: #aaa;
             float: right;
             font-size: 28px;
             font-weight: bold;
         }
-
         .close:hover,
         .close:focus {
             color: black;
             text-decoration: none;
             cursor: pointer;
         }
-
-        .contact-btn {
-            display: inline-block;
-            margin-left: 10px;
-            text-decoration: none;
-            color: #fff;
-            background: rgb(36, 32, 30);
-            padding: 10px 18px;
-            border-radius: 10px;
-            transition: .4s ease;
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
         }
-
-        .contact-btn:hover {
-            background: rgb(59, 174, 209);
+        input:focus, textarea:focus {
+            border-color: rgb(230, 104, 59);
+            outline: none;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: rgb(36, 32, 30);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.4s ease;
+        }
+        button:hover {
+            background-color: rgb(59, 174, 209);
         }
     </style>
 </head>
@@ -70,147 +139,94 @@
                 <li><a href="#">HOME</a></li>
                 <li><a href="#">ABOUT</a></li>
                 <li><a href="#">SKILL</a></li>
-                <li><a href="#" id="myWorksBtn">MY WORKS</a></li>
-                <li><a href="#" id="resumeBtn">RESUME</a></li>
+                <li><a href="#my-work">MY WORK</a></li>
+                <li><a href="mediaquery.html">RESUME</a></li>
                 <li><a href="#" id="contactBtn">CONTACT</a></li>
             </ul>
+            <button id="darkModeToggle" style="padding: 10px; border-radius: 5px; cursor: pointer;">
+                <i class="fas fa-moon"></i>
+            </button>
         </div>
         <div class="info">
             <h3>Hi, I am <span>KAMALESH.</span></h3>
             <h1><span>W</span>EB <span>D</span>ESIGNER</h1>
             <h3>Web designer and developer from Madurai.<br>I create websites to help businesses do better online.</h3>
-            <a href="#" id="hireMeBtn">Hire me</a>
-            <a href="#" id="contactButton" class="contact-btn">Contact</a>
-
-            <!-- Social Media Section -->
-            <div class="social-icons">
-                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            </div>
-        </div>
-        <div class="image">
-            <img src="ak.jpeg" class="me" alt="Kamalesh">
+            <a href="#">Hire me</a>
         </div>
     </div>
-
-    <!-- Modal for Resume -->
-    <div id="resumeModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h1>KAMALESH SB</h1>
-            <p>(Master of Computer Applications)</p>
-            <hr>
-            <section class="profile">
-                <h2>Profile</h2>
-                <p>I am an information technology student.</p>
-                <p>I consider myself a responsible and orderly person.</p>
-                <p>I am looking forward to my first work experience.</p>
-            </section>
-            <section class="contact">
-                <h2><i class="fa-regular fa-address-book"></i> Contact</h2>
-                <p><i class="fa-solid fa-phone"></i> 9629328924</p>
-                <p><i class="fa-solid fa-envelope"></i> kamaleshsb24@gmail.com</p>
-            </section>
-            <section class="education">
-                <h2><i class="fa-solid fa-school"></i> Education</h2>
-                <table>
-                    <tr>
-                        <th>S.NO</th>
-                        <th>GRADE</th>
-                        <th>NAME</th>
-                        <th>YEAR</th>
-                        <th>PERCENTAGE</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>PG</td>
-                        <td>Madurai Kamarajar University</td>
-                        <td>2023-2025</td>
-                        <td>65%</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>UG</td>
-                        <td>Dr. Zakir Husain College</td>
-                        <td>2018-2021</td>
-                        <td>83%</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>HSC</td>
-                        <td>SHSS</td>
-                        <td>2017-2018</td>
-                        <td>71%</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>SSC</td>
-                        <td>SHSS</td>
-                        <td>2015-2016</td>
-                        <td>88%</td>
-                    </tr>
-                </table>
-            </section>
-            <section class="languages">
-                <h2>Languages</h2>
-                <ol>
-                    <li>Tamil</li>
-                    <li>English</li>
-                    <li>Hindi</li>
-                </ol>
-            </section>
-            <section class="skills">
-                <h2><i class="fa-solid fa-computer"></i> Computer Skills</h2>
-                <ul>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                    <li>Java</li>
-                    <li>DSA (basic)</li>
-                </ul>
-            </section>
-            <section class="objective">
-                <h2>Objective</h2>
-                <p>To achieve a challenging position in the industry as a highly motivated and hardworking individual looking for a responsible role to contribute to the growth of the company.</p>
-            </section>
-            <section class="declaration">
-                <h2>Declaration</h2>
-                <p>I, Kamalesh, hereby declare that the information provided above is true to the best of my knowledge.</p>
-            </section>
-            <section class="experience">
-                <h2>Work Experience</h2>
-                <h3>MRF</h3>
-                <p>Technical Supervisor in MRF</p>
-            </section>
-            <footer>
-                <p>&copy; Kamalesh SB, 2024</p>
-            </footer>
-        </div>
-    </div>
-
-    <!-- Modal for My Works -->
-    <div id="myWorksModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h1>My Work at MRF</h1>
-            <h3>Technical Supervisor</h3>
-            <p>As a Technical Supervisor at MRF, I oversee the manufacturing processes, ensuring that quality standards are met consistently. My key responsibilities include:</p>
-            <ul>
-                <li>Monitoring production lines and machinery to maintain operational efficiency.</li>
-                <li>Implementing maintenance schedules to reduce downtime and improve productivity.</li>
-                <li>Training and supervising a team of technicians and operators to enhance their skills and ensure safety protocols.</li>
-                <li>Collaborating with the engineering team to troubleshoot technical issues and optimize processes.</li>
-                <li>Conducting regular quality checks to ensure that the products meet industry standards.</li>
-                <li>Maintaining accurate records of production metrics and reporting on performance.</li>
-            </ul>
-            <p>This experience has not only honed my technical skills but also enhanced my leadership and problem-solving abilities.</p>
-        </div>
-    </div>
-
-    <!-- Modal for Contact -->
+    
+    <!-- Contact Modal -->
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h1>Contact Me</h1
+            <h2 style="font-size: 24px; color: rgb(36, 32, 30);">Contact Me</h2>
+            <form id="contactForm">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="address" placeholder="Your Address" rows="4" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for Modal
+        const contactBtn = document.getElementById('contactBtn');
+        const modal = document.getElementById('contactModal');
+        const closeBtn = document.getElementsByClassName('close')[0];
+        
+        contactBtn.onclick = function() {
+            modal.style.display = "block";
+        }
+        
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+        
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // JavaScript for Form Validation
+        const contactForm = document.getElementById('contactForm');
+
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const address = document.getElementById('address').value.trim();
+
+            // Validate fields
+            if (name === '') {
+                alert('Please enter your name.');
+            } else if (email === '') {
+                alert('Please enter your email.');
+            } else if (address === '') {
+                alert('Please enter your address.');
+            } else {
+                alert('Form submitted successfully!');
+                modal.style.display = "none";
+                contactForm.reset();
+            }
+        });
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+
+            if(body.classList.contains('dark-mode')) {
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+    </script>
+</body>
+</html>
+
